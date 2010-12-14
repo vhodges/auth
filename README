@@ -1,0 +1,46 @@
+
+Welcome to the Juno project!
+
+Juno is a simple Ruby on Rails 3.0 web application that financial institutions
+can run and host to allow third party applications access to their member's/client's
+financial data without requiring those members/clients to hand over their login
+information to the third party applications.  It is an Open Source project under
+the terms and conditions of the New BSD License.
+
+Juno authorises applications by using the emerging standard OAuth protocol.
+
+Service, Support, Training and Custom Development are available from Sourdough Labs
+Research and Development Corp.  Email Vince Hodges at vince@sourdoughlabs.com or
+604-603-1741.
+
+Getting Started.
+
+It's Rails...
+
+1) Create database
+2) Run migrations
+3) run the server (rails s)
+4) Implement Member Authentication and the register call backs API
+
+What You Need To Implement
+
+  Member Authentication
+
+
+    Member Authentication is based on OmniAuth (https://github.com/intridea/omniauth/)
+    You must implement a custom strategy that authenticates against your core (or online)
+    banking system.
+
+    See BLANK for an example
+
+  Register Transaction Notification Callback API
+
+    You must implement something that will record a URL for the supplied user) that will
+    be called whenever a transaction is performed on a members account.  Code must also
+    be implmented in your core system that will call this callback url whenever there is
+    a transaction.
+
+Thanks to our sponsor!
+
+Our sponsor shall remain a mystery at this time, but this project
+would not be possible without their support and help.

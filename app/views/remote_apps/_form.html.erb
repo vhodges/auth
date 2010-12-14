@@ -1,0 +1,30 @@
+  <div class="group">
+    <%= label_tag :display_name, t("activerecord.attributes.remote_app.display_name", :default => "Display Name"), :class => :label %>
+    <%= text_field_tag :display_name, @remote_app.display_name, :class => 'text_field' %>
+    <span class="description">Common/popular name of the application</span>
+  </div>
+
+  <div class="group">
+    <%= label_tag :link, t("activerecord.attributes.remote_app.link", :default => "Link"), :class => :label %>
+    <%= text_field_tag :link, @remote_app.link, :class => 'text_field' %>
+    <span class="description">Url of the application</span>
+  </div>
+
+  <div class="group">
+    <%= label_tag :image_url, t("activerecord.attributes.remote_app.image_url", :default => "Image URL"), :class => :label %>
+    <%= text_field_tag :image_url, @remote_app.image_url, :class => 'text_field' %>
+    <span class="description">URL of an image to represent the application</span>
+  </div>
+
+  <div class="group">
+    <%= label_tag :redirect_uri, t("activerecord.attributes.remote_app.redirect_uri", :default => "Redirect URI"), :class => :label %>
+    <%= text_field_tag :redirect_uri, @remote_app.redirect_uri, :class => 'text_field' %>
+    <span class="description">URL to redirect the user too after authentication.</span>
+  </div>
+
+  <div class="group navform wat-cf">
+    <button class="button" type="submit">
+      <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+    </button>
+    <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}") + " " + t("web-app-theme.cancel", :default => "Cancel"), apps_path, :class => "button" %>
+  </div>

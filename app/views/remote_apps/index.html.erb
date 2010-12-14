@@ -1,0 +1,50 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", apps_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_app_path %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Client Applications</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first">ID</th>
+          <th>
+            <%= t("activerecord.attributes.remote_app.display_name", :default => t("activerecord.labels.display_name", :default => "Display Name")) %>
+          </th>
+          <th>
+            <%= t("activerecord.attributes.remote_app.revoked", :default => t("activerecord.labels.revoked", :default => "Revoked?")) %>
+          </th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @remote_apps.each do |app| -%>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td>
+              <%= app.id %>
+            </td>
+            <td>
+              <%= link_to app.display_name, app_path(app.id) %>
+            </td>
+            <td>
+              <%= app.revoked.nil? ? "No" : "Yes" %>
+            </td>
+            <td class="last">
+              <%= link_to_if app.revoked.nil?, "#{t("web-app-theme.revoke", :default => "Revoke")}", revoke_app_path(app.id), :method => :put %> |
+              <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_app_path(app.id) %> |
+              <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", app_path(app.id), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+            </td>
+          </tr>
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
