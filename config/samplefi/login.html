@@ -1,21 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Mount Lehman Credit Union - Personal Banking</title>
+  <title>Juno Authentication Service Sample Login Page</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="author" content="Mount Lehman Credit Union" />
-  <meta name="copyright" content="copyright (c) 2011 Mount Lehman Credit Union" />
-  <link rel="shortcut icon" href="http://www.mtlehman.com/DynamicContent/Resources/Images/favicon.ico" />
+  <meta name="author" content="Sourdough Labs Research and Development Corp." />
+  <meta name="copyright" content="copyright (c) 2011 Sourdough Labs Research and Development Corp." />
+  <link rel="shortcut icon" href="http://www.pennyminder.com/favicon.ico" />
   <meta name="viewport" content="width=960" />
-
-  <link href="http://www.mtlehman.com/DynamicContent/Resources/Style/brand$designScheme@personal+v@201109130125.css" rel="stylesheet" type="text/css" media="screen" />
-  <link href="http://www.mtlehman.com/DynamicContent/Resources/Style/home$v@201109130125.css" rel="stylesheet" type="text/css" media="screen" />
-  <link href="http://www.mtlehman.com/DynamicContent/Resources/Style/print$v@201109130125.css" rel="stylesheet" type="text/css" media="print" />
-  <script type="text/javascript" language="JavaScript" src="http://www.mtlehman.com/DynamicContent/Resources/Script/common$v@201109130125.js" ></script>
-  <script type="text/javascript" language="JavaScript" src="http://www.mtlehman.com/DynamicContent/Resources/Script/home$v@201109130125.js" ></script>
-
-  <meta name="title" content="Personal Banking"/>
-  <meta name="id" content="PersonalBanking"/>
 
     <style type='text/css'>
       body {
@@ -64,129 +55,35 @@
 
 </head>
 
-<body class="Home ">
-  <div class="mdi ">
+<body>
+  <div>
+    <h1>Juno Authentication Service Sample Login page</h1>
+  </div>
 
+  <div>
 
+    <% if @error_message %>
+      <div>
+        <h3>We're sorry, there was a problem.</h3>
+        <p><%= @error_message %></p>
+        <p>Please try again.</p>
+      </div>
+    <% end %>
 
-    <div class="outerHeader">
-      <div class="header">
-        <h1 class="logo">
-          <a href="http://www.mtlehman.com/Personal/" title="Home" class="self current"><img src="http://www.mtlehman.com/DynamicContent/Resources/Images/Logo.gif" alt="Mount Lehman Credit Union" /></a></h1>
+    <h2>Please sign into your account</h2>
+    <form method='post' noValidate='noValidate'>
 
-        <h2 class="adjacent">
-          Authentication Service <a href="http://www.mtlehman.com/Personal/" title="Personal" class="id-Personal">Back to our home page</a>
-        </h2>
+      <label for='username'>Account Number:</label><xbr/>
+      <input type='text' id='account' name='account'/><xbr/>
 
-        <ul class="skip nav">
-          <li><a href="#mainContent">skip to content</a></li>
-          <li>
+      <input type='hidden' id='branch' name='branch' value="1"/>
 
-            <a href="http://www.mtlehman.com/Personal/OnlineBanking/" title="Online Banking" class="notcurrent">Login to Online Banking</a>
+      <label for='password'>PAC:</label><xbr/>
+      <input type='password' id='password' name='password'/><xbr/>
+      <button type='submit'>Sign In</button>
 
-          </li>
-        </ul>
-        <div class="global">
-          <ul class="nav global">
-            <li class="link0 even self current id-PersonalBanking name-home name-PersonalBanking"><a href="http://www.mtlehman.com/Personal/" title="Personal Banking">Home</a></li>
-            <li class="link1 odd notcurrent id-FindBranchATM name-section name-FindBranchATM"><a href="http://www.mtlehman.com/Personal/ToolsAndCalculators/FindBranchATM/" title="Find Branch / ATM">Find Branch / ATM</a></li>
-            <li class="link2 even notcurrent id-Help name-section name-contextRoot name-Help"><a href="http://www.mtlehman.com/Personal/Help/" title="Help">Help</a></li>
-            <li class="link3 odd notcurrent id-ContactUs name-section name-contactus name-ContactUs"><a href="http://www.mtlehman.com/Personal/AboutUs/ContactUs/" title="Contact Us">Contact Us</a></li>
-            <li class="link4 even notcurrent id-Rates name-contextRoot name-Rates"><a href="http://www.mtlehman.com/Personal/Rates/" title="Rates">Rates</a></li>
-            <li class="link5 linkN odd notcurrent id-Search name-section name-Search"><a href="http://www.mtlehman.com/Personal/ToolsAndCalculators/Search/" title="Search">Search</a></li>
-          </ul>
-        </div>
-
-        <div class="secondary">
-          <ul class="nav secondary">
-            <li class="link0 even notcurrent id-InOurCommunity name-section name-contextRoot name-InOurCommunity"><a href="http://www.mtlehman.com/Personal/InOurCommunity/" title="In Our Community">In Our Community</a></li>
-            <li class="link1 odd notcurrent id-BecomingAMember name-contextRoot name-BecomingAMember"><a href="http://www.mtlehman.com/Personal/BecomingAMember/" title="Becoming A Member">Becoming A Member</a></li>
-            <li class="link2 linkN even notcurrent id-AboutUs name-section name-contextRoot name-AboutUs"><a href="http://www.mtlehman.com/Personal/AboutUs/" title="About Us">About Us</a></li>
-          </ul>
-
-        </div>
-
-
-        <div class="primary">
-          <ul class="nav primary">
-            <li class="link0 even notcurrent id-OnlineBanking name-primary name-section name-onlinehome name-contextRoot name-OnlineBanking"><a href="http://www.mtlehman.com/Personal/OnlineBanking/" title="Online Banking">Online Banking</a></li>
-            <li class="link1 odd notcurrent id-ProductsandServices name-homepage-context name-section name-contextRoot name-ProductsandServices"><a href="http://www.mtlehman.com/Personal/ProductsAndServices/" title="Products and Services">Products and Services</a></li>
-            <li class="link2 linkN even notcurrent id-ToolsandCalculators name-section name-contextRoot name-ToolsandCalculators"><a href="http://www.mtlehman.com/Personal/ToolsAndCalculators/" title="Tools and Calculators">Tools and Calculators</a></li>
-          </ul>
-
-        </div>
-      </div><!--/header-->
-
-    </div><!--/outerHeader-->
-    <div class="outerColContainer">
-      <div class="colContainer">
-        <div class="promo home">
-          <img src="http://www.mtlehman.com/SharedContent/images/callout.jpg" alt="" ""/>
-          <div class="bd">
-            <h3>Our New Authentication Service</h3>
-            <p>Use this page to sign into your account to access our new apps and services.<p>
-
-          </div>
-          <br/>
-        </div>
-
-        <div class="colOneTwo">
-          <div class="mainContent" id="mainContent">
-            <div class="portlets phc homeCopyBlock"><div class="portlet marketing">
-                <div class="simple">
-
-                  <% if @error_message %>
-                    <div>
-                      <h3>We're sorry, there was a problem.</h3>
-                      <p><%= @error_message %></p>
-                      <p>Please try again.</p>
-                    </div>
-                  <% end %>
-
-                  <h2>Please sign into your account</h2>
-                  <form method='post' noValidate='noValidate'>
-
-                    <label for='username'>Account Number:</label><xbr/>
-                    <input type='text' id='account' name='account'/><xbr/>
-
-                    <input type='hidden' id='branch' name='branch' value="1"/>
-
-                    <label for='password'>PAC:</label><xbr/>
-                    <input type='password' id='password' name='password'/><xbr/>
-                    <button type='submit'>Sign In</button>
-
-                  </form>
-
-                </div>
-              </div>
-            </div>
-
-          </div><!--/maincontent-->
-        </div><!--/colOneTwo-->
-
-        <div class="colThree" style="height:200px;">
-          &nbsp;
-        </div><!--/colThree-->
-
-        <div class="clear">&nbsp;</div>
-      </div><!--/contentContainer-->
-    </div><!--/outerContentContainer-->
-
-    <div class="outerFooter">
-      <div class="footer">
-        <ul class="nav footer">
-          <li class="link0 even notcurrent id-YourPrivacy name-YourPrivacy"><a href="http://www.mtlehman.com/Personal/AboutUs/OnlinePolicies/Privacy/" title="Your Privacy">Privacy</a></li>
-          <li class="link1 odd notcurrent id-Securityiseveryonesresponsibility name-MDSecurity name-Securityiseveryonesresponsibility"><a href="http://www.mtlehman.com/Personal/AboutUs/OnlinePolicies/InternetSecurity/" title="Security is everyone&#39;s responsibility">Internet Security</a></li>
-          <li class="link2 even notcurrent id-SiteMap name-section name-SiteMap"><a href="http://www.mtlehman.com/Personal/ToolsAndCalculators/SiteMap/" title="Site Map">Site Map</a></li>
-          <li class="link3 linkN odd notcurrent id-AccessibilityStatement name-AccessibilityStatement"><a href="http://www.mtlehman.com/Personal/AboutUs/OnlinePolicies/AccessibilityStatement/" title="Accessibility Statement">Accessibility Statement</a></li>
-        </ul>
-
-        <br />
-
-      </div><!--/footer-->
-    </div><!--/outerFooter-->
-
-  </div><!-- /mdi -->
+    </form>
+  </div>
 
 </body>
 </html>

@@ -1,29 +1,54 @@
 #
-# Base class for API implementations.  Have yours extend this class.
+# Version 1 API methods:
+#
+#  profile           - Return information about the current member
+#  register_callback - register a notification/alert webhook for the current member
+#  remove_callback   - un register the notification/alert webhook for the current member
+#
+# All actions render text and/or JSON removing the need for views
+#
 #
 class VersionOneApiController < ApplicationController
 
   before_filter :log_in_if_needed
+  oauth_required
 
-  #before_filter :set_current_user
-  #oauth_required
-
-  # TODO Implement this method (it should be the same for all implementations
-  # (as the omniauth provider imple will provide the common info for the profile data)
   def profile
-    render :text => "Profile data goes here."
+    data = {
+      "extra" => {
+        "name" => @current_member.name,
+      },
+      "uid" => @current_member.uid,
+    }
+
+    render :text => data.to_json
+  end
+
+  def register_callback
+    # TODO Should have validation on the callback url of some kind.
+    FinancialInstitutionConfig.callback_saver().save_callback(@current_member, params[:callback])
+    render :text => "OK"
+  end
+
+  def remove_callback
+    FinancialInstitutionConfig.callback_saver().clear_callback(@current_member)
+    render :text => "OK"
   end
 
   protected
 
   def log_in_if_needed
-    unless current_member
-      redirect_to member_omniauth_authorize_path(:host_provider_example)
+    set_current_member
+    Rails.logger.info("@current_member= #{@current_member}")
+    unless @current_member
+      redirect_to member_omniauth_authorize_path(:coreauth)
     end
   end
 
-  def set_current_user
-    @current_member = Member.find(oauth.identity) if oauth.authenticated?
+  def set_current_member
+    Rails.logger.info("oauth.identity = #{env['oauth.identity']}")
+    Rails.logger.info("env = #{env.inspect}")
+    @current_member = Member.find(env['oauth.identity']) if oauth.authenticated?
   end
 
 end

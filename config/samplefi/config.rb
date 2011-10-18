@@ -17,10 +17,14 @@ HOST_AUTH_OPTIONS = {
     'disclaimer_needed' => File.join(FI_CONFIG_PATH, "disclaimer_needed.html"),
     'pac_change_needed' => File.join(FI_CONFIG_PATH, "pac_change_needed.html"),
   }
+
+  #If your auth client requires additional key/values to configure itself (ie host/port)
+  #add them here.
+
 }
 
 # Our callback saver.
-require 'default_callback_saver'
+require 'lib/default_callback_saver'
 
 #
 # The demo/reference implementation runs under both ruby and jruby/java
@@ -41,7 +45,7 @@ rescue Exception => e
 end
 
 #
-# Define a class called FIConfig - the rest of Juno expects this class to be present
+# Define a class called FinancialInstitutionConfig - the rest of Juno expects this class to be present
 #
 # The methods form the contract that is expected by the rest of Juno, all are
 # required.  The implementations can of course be whatever you need them to be.

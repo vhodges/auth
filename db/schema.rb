@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101214183330) do
+ActiveRecord::Schema.define(:version => 20111018173754) do
 
   create_table "members", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -26,10 +26,25 @@ ActiveRecord::Schema.define(:version => 20101214183330) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uid"
+    t.string   "branch"
+    t.string   "account"
+    t.string   "name"
+    t.string   "callback_url"
   end
 
-  add_index "members", ["email"], :name => "index_members_on_email", :unique => true
   add_index "members", ["reset_password_token"], :name => "index_members_on_reset_password_token", :unique => true
+  add_index "members", ["uid"], :name => "index_members_on_uid", :unique => true
+
+  create_table "pfm_callbacks", :force => true do |t|
+    t.string   "memberNumber"
+    t.string   "branch_id"
+    t.string   "pfmurl"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "pac"
+    t.string   "first_name"
+    t.string   "last_name"
+  end
 
   create_table "remote_apps", :force => true do |t|
     t.integer  "user_id"

@@ -1,18 +1,32 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'          # Rails
-gem 'mysql2'                  # DB Driver
-gem 'unicorn'                 # Use unicorn as the web server
+gem 'bundler'
 
+gem 'rails', '3.0.10'          # Rails
 
-gem 'capistrano'              # Deploy with Capistrano
-gem 'capistrano-ext'
+platforms :ruby do
+  gem 'mysql2', '< 0.3'                  # DB Driver
+
+  gem 'unicorn'                 # Use unicorn as the web server
+
+  gem 'capistrano'              # Deploy with Capistrano
+  gem 'capistrano-ext'
+
+  gem 'ruby-debug19'            # To use debugger
+end
+
+platforms :jruby do
+  gem 'activerecord-jdbcmysql-adapter'
+  gem 'jruby-openssl'
+  gem 'trinidad'
+end
 
 #                             # Login & Authorization
-gem 'devise', :git => "git://github.com/plataformatec/devise.git"
+gem 'devise'#, :git => "git://github.com/plataformatec/devise.git"
 gem 'acl9'
+
 gem 'rack-oauth2-server'      # For authorizing remote client apps.
-gem "oa-oauth", :require => "omniauth/oauth"
+gem "oa-oauth",  '0.3.0',:require => "omniauth/oauth"
 
 gem "formtastic"              # Forms
 gem "inherited_resources"     # Controller
@@ -22,11 +36,10 @@ gem "transitions", :require => ["transitions", "active_record/transitions"]
 
 gem 'awesome_print'           # Utils
 
-# gem 'ruby-debug'            # To use debugger
 
-group :development, :test do
-  gem 'web-app-theme', '>= 0.6.2'
-end
+#group :development, :test do
+#  gem 'web-app-theme', '>= 0.6.2'
+#end
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

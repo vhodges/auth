@@ -29,6 +29,10 @@
       </p>
 
       <p>
+        <b><%= t("activerecord.attributes.remote_app.id", :default => t("activerecord.labels.id", :default => "ID")) %>:</b>
+        <%= @remote_app.id %>
+      </p>
+      <p>
         <b><%= t("activerecord.attributes.remote_app.secret", :default => t("activerecord.labels.secret", :default => "Secret")) %>:</b>
         <%= @remote_app.secret %>
       </p>

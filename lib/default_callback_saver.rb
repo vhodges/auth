@@ -3,6 +3,13 @@
 # for sending out account activity when it occurs.
 #
 
+# This implementation just saves the callback url on the juno.members table
+#
+# TODO This class should support potential multiple callback urls for each member
+# (one for each app the user is using if the app has a callback)
+#
+# Right now, it's only Cashbook, so it doesn't matter too much yet.
+#
 class DefaultCallbackSaver
 
   # The contract has these two entry points

@@ -2,6 +2,8 @@ Juno::Application.routes.draw do
 
   devise_for :members, :controllers => { :omniauth_callbacks => "members/omniauth_callbacks" }
 
+  match '/auth/failure' => 'members/omniauth_callbacks#failure'
+
   resources :administrators do
     member do
       put :make
@@ -17,7 +19,7 @@ Juno::Application.routes.draw do
   end
 
   # TODO Update Routes for the API controller to point at your implementation controller.
-  match '/api/v1/:action' => 'Sampleapiv1'
+  match '/api/v1/:action' => 'version_one_api'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -75,6 +77,8 @@ Juno::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
+  match '/oauth/:action', :controller => :oauth
 
   #mount Rack::OAuth2::Server::Admin=>"/oauth/admin"
 

@@ -66,6 +66,8 @@ class RemoteAppsController < ApplicationController
     p[:link] = params[:link]
     p[:image_url] = params[:image_url]
     p[:redirect_uri] = params[:redirect_uri]
+    p[:scope] = 'read'
+
     return p
   end
 
