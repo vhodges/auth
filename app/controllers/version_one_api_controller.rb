@@ -39,15 +39,12 @@ class VersionOneApiController < ApplicationController
 
   def log_in_if_needed
     set_current_member
-    Rails.logger.info("@current_member= #{@current_member}")
     unless @current_member
       redirect_to member_omniauth_authorize_path(:coreauth)
     end
   end
 
   def set_current_member
-    Rails.logger.info("oauth.identity = #{env['oauth.identity']}")
-    Rails.logger.info("env = #{env.inspect}")
     @current_member = Member.find(env['oauth.identity']) if oauth.authenticated?
   end
 
