@@ -1,46 +1,82 @@
 
 Welcome to the Juno project!
 
-Juno is a simple Ruby on Rails 3.0 web application that financial institutions
-can run and host to allow third party applications access to their member's/client's
-financial data without requiring those members/clients to hand over their login
-information to the third party applications.  It is an Open Source project under
-the terms and conditions of the New BSD License.
+  Juno is a simple Ruby on Rails 3.0 web application that financial institutions
+  can run and host to provide authentication services to third party applications.
+  Juno authorises applications by using the (emerging) standard OAuth2 protocol.
 
-Juno authorises applications by using the emerging standard OAuth protocol.
+  It is an Open Source project under the terms and conditions of the New BSD License.
+
+Dependencies
+
+  MongoDB (required by https://github.com/flowtown/rack-oauth2-server)
+  JRuby 1.6.4 or Ruby 1.9.2 (Out of the box, Juno expects to be run under JRuby)
+
+  Juno uses the following gems (and there should be some familiarity with them):
+
+   - Devise
+   - OmniAuth
+   - rack-oauth2-server
+
+Getting Started
+
+  0) Edit config/database.yml
+  1) Create databases
+  2) Run migrations
+  3) run the server (jruby -S trinidad or rails s) - this starts up with
+     the config/samplefi/config.rb configuration file.  To run the server
+     using a different configuration file, start it like so:
+
+       FICONFIG=/path/to/config.rb jruby -S trinidad (or rails s)
+
+Create first admin account
+
+  4) Create a user (http://localhost:3000/users/sign_up
+     and confirm account (the url is in the logs (and maybe your inbox too! :) )))
+  5) rails console
+  6) u = User.find(1)
+  7) u.has_role!(:admin)
+
+  Subsequent users can be turned into admins on the administrators
+  page.
+
+  Note, in case it's not clear, end users do NOT have accounts on
+  this service.  End users are authenticated (using a custom OmniAuth
+  strategy) against the core banking system.  See lib/coreauth.rb
+
+Implementing for your financial institution
+
+  We've tried to make this as turnkey as possible, but there are a few
+  things you will need to do to integrate with your organization.
+
+    1) Setup local configuration
+    2) Theme the member login page
+    3) Implement an 'AuthClient' to interact with the host system
+
+  Start by copying the sample configuration in config/samplefi/* into a new
+  folder.  Take a look at the files. The config.rb file is commented.
+
+  Next you should look at the FinancialInstitutionConfig class and modify
+  it to suite your needs.
+
+  Lastly you will need to implement an 'authclient' class that talks
+  to the core banking system to authenticate end users.  There is a
+  Java example in classes/MockAuthClient.java and an unfinished ruby
+  example near the top (in the rescue block) of config/samplefi/config.rb
+
+  We have an auth client available for ISO8583 based core banking systems
+  (sadly, not open source).
+
+  That should get you started, let support@pennyminder.com know if you
+  have any questions.
+
+Need Help?
 
 Service, Support, Training and Custom Development are available from Sourdough Labs
-Research and Development Corp.  Email Vince Hodges at vince@sourdoughlabs.com or
-604-603-1741.
-
-Getting Started.
-
-It's Rails...
-
-1) Create database
-2) Run migrations
-3) run the server (rails s)
-4) Implement Member Authentication and the register call backs API
-
-What You Need To Implement
-
-  Member Authentication
-
-
-    Member Authentication is based on OmniAuth (https://github.com/intridea/omniauth/)
-    You must implement a custom strategy that authenticates against your core (or online)
-    banking system.
-
-    See BLANK for an example
-
-  Register Transaction Notification Callback API
-
-    You must implement something that will record a URL for the supplied user) that will
-    be called whenever a transaction is performed on a members account.  Code must also
-    be implmented in your core system that will call this callback url whenever there is
-    a transaction.
+Research and Development Corp.  Email Vince Hodges at support@pennyminder.com.
 
 Thanks to our sponsor!
 
-Our sponsor shall remain a mystery at this time, but this project
-would not be possible without their support and help.
+A great deal of the work on this project was sponsored by our first client and this project
+would not exist if it wasn't for their help and support.
+
