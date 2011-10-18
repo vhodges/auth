@@ -3,9 +3,22 @@ Welcome to the Juno project!
 
   Juno is a simple Ruby on Rails 3.0 web application that financial institutions
   can run and host to provide authentication services to third party applications.
-  Juno authorises applications by using the (emerging) standard OAuth2 protocol.
+  Juno authorizes applications by using the (emerging) standard OAuth2 protocol.
 
   It is an Open Source project under the terms and conditions of the New BSD License.
+
+Why Juno?
+
+  Why would you need to offer such a service?  Initially, Pennyminder Cashbook
+  (our White  label PFM solution) would be the primary consumer of such
+  authentication services (and we would really appreciate it if you were to
+  take a look at our hosted PFM offering at http://www.pennyminder.com/ :).
+
+  But beyond PFM, we see it as an enabling technology. A standardized authentication
+  service would allow you to easily build and deploy additional consumer facing
+  applications in a safe and secure way. And by using open standards such as OAuth2
+  Juno allows those applications to be built using whatever technologies make sense
+  for those applications.
 
 Dependencies
 
@@ -42,7 +55,7 @@ Create first admin account
 
   Note, in case it's not clear, end users do NOT have accounts on
   this service.  End users are authenticated (using a custom OmniAuth
-  strategy) against the core banking system.  See lib/coreauth.rb
+  Strategy) against the core banking system.  See lib/coreauth.rb
 
 Implementing for your financial institution
 
