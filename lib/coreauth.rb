@@ -32,10 +32,11 @@ module OmniAuth
         Rails.logger.info("initializing ")
 
         @host_options = options[:host_options]
-
-        @client = FinancialInstitutionConfig.corebanking_auth_client.new(@host_options)
         @login_page = @host_options['login_page'] # Filename of the file containing the html for the login page.
         @error_pages = @host_options['error_pages']
+
+        # Connect to the host system
+        @client = FinancialInstitutionConfig.corebanking_auth_client()
       end
 
       protected
