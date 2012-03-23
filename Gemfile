@@ -19,6 +19,7 @@ platforms :jruby do
   gem 'activerecord-jdbcmysql-adapter'
   gem 'jruby-openssl'
   gem 'trinidad'
+  gem 'trinidad_lifecycle_extension'
 end
 
 #                             # Login & Authorization

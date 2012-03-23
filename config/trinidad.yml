@@ -1,0 +1,3 @@
+extensions:
+  lifecycle:
+    path: 'lib/lifecycle' # Path by default, not required

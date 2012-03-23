@@ -73,5 +73,10 @@ class FinancialInstitutionConfig
   def self.organization_name
     return "Sample Financial Institution"
   end
+
+  # Make sure that corebanking_auth_client (threads/connections/etc) shutdown cleanly
+  def self.shutdown_corebanking_auth_client
+    # No-op in the sample.
+  end
 end
 
