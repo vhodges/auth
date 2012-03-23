@@ -61,7 +61,7 @@ class FinancialInstitutionConfig
   # Return a class constant that will be instantiated in coreauth to communicate with
   # the core banking system
   def self.corebanking_auth_client
-    return AuthClient
+    return AuthClient.new
   end
 
   # Return a class constant that will be instantiated in the api to save callback urls
