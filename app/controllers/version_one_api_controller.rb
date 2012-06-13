@@ -16,7 +16,8 @@ class VersionOneApiController < ApplicationController
   def profile
     data = {
       "extra" => {
-        "name" => @current_member.name,
+        "emails" => FinancialInstitutionConfig.email_alert_contacts(@current_member),
+        "phones" => FinancialInstitutionConfig.phone_alert_contacts(@current_member),
       },
       "uid" => @current_member.uid,
     }
@@ -35,6 +36,25 @@ class VersionOneApiController < ApplicationController
     render :text => "OK"
   end
 
+  #
+  # Cashbook will (if configured to) send updates for categories that have a spending
+  # target to this action to do with as the FI sees fit (typically to send out an emmail/sms)
+  def budgetalert
+
+    category = params[:category]      # Printable String
+    total = params[:total]            # Printable String dollar amount
+    percentage = params[:percentage]  # Printable String percentage
+    remaining = params[:remaining]    # Printable String dollar amount
+    overbudget = params[:overbudget]  # String "true" || "false"
+    phones  = params[:phones]         # Comma separated string of phone id's
+    emails  = params[:emails]         # Comma separated string of email id's
+    sequence_id = params[:sequence_id]# Int with value for logging
+
+    Rails.logger.info("budgetalert called")
+    Rails.logger.info("#{phones}, #{emails}, #{category}, #{total}, #{percentage}, #{remaining}, #{(overbudget == "true")}")
+    render :text => "OK"
+  end
+
   protected
 
   def log_in_if_needed
@@ -45,6 +65,7 @@ class VersionOneApiController < ApplicationController
   end
 
   def set_current_member
+    Rails.logger.info("Authenticated?: #{oauth.authenticated?}, oauth.identity = #{env['oauth.identity']}")
     @current_member = Member.find(env['oauth.identity']) if oauth.authenticated?
   end
 

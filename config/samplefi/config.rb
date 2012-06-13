@@ -61,7 +61,7 @@ class FinancialInstitutionConfig
   # Return a class constant that will be instantiated in coreauth to communicate with
   # the core banking system
   def self.corebanking_auth_client
-    return AuthClient.new
+    return AuthClient.new({})
   end
 
   # Return a class constant that will be instantiated in the api to save callback urls
@@ -78,5 +78,14 @@ class FinancialInstitutionConfig
   def self.shutdown_corebanking_auth_client
     # No-op in the sample.
   end
+
+  def self.email_alert_contacts(member)
+    [{"display" => "vince@imbas.ca", "value" => "5"}, {"display" => "vhodges@gmail.com", "value" => "4"}]
+  end
+
+  def self.phone_alert_contacts(member)
+    [{"display" => "604-603-1741 (Fido)", "value" => "2"}, {"display" => "604-603-xxxx (Fake)", "value" => "3"}]
+  end
+
 end
 

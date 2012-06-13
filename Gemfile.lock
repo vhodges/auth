@@ -133,6 +133,7 @@ GEM
       jruby-rack (>= 1.0.9)
       trinidad_jars (>= 1.0.1)
     trinidad_jars (1.0.1)
+    trinidad_lifecycle_extension (0.2.2)
     tzinfo (0.3.30)
     warden (1.0.5)
       rack (>= 1.0)
@@ -159,4 +160,5 @@ DEPENDENCIES
   ruby-debug19
   transitions
   trinidad
+  trinidad_lifecycle_extension
   unicorn
