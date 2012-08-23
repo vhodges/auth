@@ -36,10 +36,11 @@ GEM
     addressable (2.2.6)
     arel (2.0.10)
     awesome_print (0.4.0)
+    bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-java)
     bouncy-castle-java (1.5.0146.1)
+    bson (1.4.0)
     bson (1.4.0-java)
-    bson_ext (1.4.0)
     builder (2.1.2)
     cocaine (0.2.0)
     devise (1.4.7)
@@ -71,6 +72,8 @@ GEM
     mime-types (1.16)
     mongo (1.4.0)
       bson (= 1.4.0)
+    mongodb (2.0.2)
+      mongo (~> 1.4)
     multi_json (1.0.3)
     multi_xml (0.4.1)
     multipart-post (1.1.3)
@@ -93,11 +96,14 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.2)
+    puma (1.5.0)
+      rack (~> 1.2)
+    puma (1.5.0-java)
+      rack (~> 1.2)
     rack (1.2.4)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-oauth2-server (2.4.1)
-      bson_ext
       mongo (~> 1)
       rack (~> 1.1)
       sinatra (~> 1.1)
@@ -132,6 +138,8 @@ GEM
     trinidad (1.2.3)
       jruby-rack (>= 1.0.9)
       trinidad_jars (>= 1.0.1)
+    trinidad_daemon_extension (0.3.1)
+      trinidad_jars (>= 1.0.0)
     trinidad_jars (1.0.1)
     trinidad_lifecycle_extension (0.2.2)
     tzinfo (0.3.30)
@@ -145,6 +153,8 @@ DEPENDENCIES
   acl9
   activerecord-jdbcmysql-adapter
   awesome_print
+  bson
+  bson_ext
   bundler
   capistrano
   capistrano-ext
@@ -152,13 +162,16 @@ DEPENDENCIES
   formtastic
   inherited_resources
   jruby-openssl
+  mongodb
   mysql2 (< 0.3)
   oa-oauth (= 0.3.0)
   paperclip
+  puma
   rack-oauth2-server
   rails (= 3.0.10)
   ruby-debug19
   transitions
   trinidad
+  trinidad_daemon_extension
   trinidad_lifecycle_extension
   unicorn

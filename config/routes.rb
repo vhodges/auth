@@ -1,5 +1,6 @@
 Juno::Application.routes.draw do
 
+  #:sessions => "devise/sessions"
   devise_for :members, :controllers => { :omniauth_callbacks => "members/omniauth_callbacks" }
 
   match '/auth/failure' => 'members/omniauth_callbacks#failure'
@@ -19,7 +20,12 @@ Juno::Application.routes.draw do
   end
 
   # TODO Update Routes for the API controller to point at your implementation controller.
+  match '/api/v1/budgetalert' => 'alerts#budgetalert'
   match '/api/v1/:action' => 'version_one_api'
+
+  devise_scope :member do
+    match "/members/sign_out", :controller => "devise/sessions", :action => "destroy"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -39,7 +39,7 @@ rescue Exception => e
     end
 
     def authenticateMember(account, branch, pac)
-      return { 'error' => "invalid_credentials"}  # For now, TODO Implement a better pure ruby mock auth client.
+      return { 'error' => "invalid_credentials_ruby"}  # For now, TODO Implement a better pure ruby mock auth client.
     end
   end
 end
@@ -87,5 +87,8 @@ class FinancialInstitutionConfig
     [{"display" => "604-603-1741 (Fido)", "value" => "2"}, {"display" => "604-603-xxxx (Fake)", "value" => "3"}]
   end
 
+  def self.after_signout_path
+    "http://www.pennyminder.com/"
+  end
 end
 

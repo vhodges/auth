@@ -13,6 +13,7 @@ platforms :ruby do
   gem 'capistrano-ext'
 
   gem 'ruby-debug19'            # To use debugger
+  gem 'bson_ext'
 end
 
 platforms :jruby do
@@ -20,12 +21,16 @@ platforms :jruby do
   gem 'jruby-openssl'
   gem 'trinidad'
   gem 'trinidad_lifecycle_extension'
+  gem 'trinidad_daemon_extension'
+  gem 'puma'
 end
 
 #                             # Login & Authorization
 gem 'devise'#, :git => "git://github.com/plataformatec/devise.git"
 gem 'acl9'
 
+gem 'bson'
+gem 'mongodb'
 gem 'rack-oauth2-server'      # For authorizing remote client apps.
 gem "oa-oauth",  '0.3.0',:require => "omniauth/oauth"
 
