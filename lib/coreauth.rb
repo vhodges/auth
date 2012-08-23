@@ -59,7 +59,7 @@ module OmniAuth
             begin
               error =  File.read(@error_pages[request.params['message']])
             rescue Exception => e
-              error = "Error, missing template: '#{@error_pages[request.params['message']]}'"
+              error = "Error: " + request.params['message']
             end
           end
         end
