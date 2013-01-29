@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'bundler'
 
-gem 'rails', '3.0.10'          # Rails
+gem 'rails', '3.0.20'          # Rails
 
 platforms :ruby do
   gem 'mysql2', '< 0.3'                  # DB Driver

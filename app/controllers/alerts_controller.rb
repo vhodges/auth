@@ -20,7 +20,7 @@ class AlertsController < ApplicationController
     Rails.logger.info("budgetalert called")
     Rails.logger.info("#{phones}, #{emails}, #{category}, #{total}, #{percentage}, #{remaining}, #{(overbudget == "true")}")
 
-    unless @current_member.nil?
+    unless current_member.nil?
       FinancialInstitutionConfig.send_alert(@current_member,
                                             sequence_id,
                                             phones,
