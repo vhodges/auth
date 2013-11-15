@@ -1,16 +1,15 @@
+Welcome to the Pennyminder Auth project!
 
-Welcome to the Juno project!
-
-  Juno is a simple Ruby on Rails 3.0 web application that financial institutions
+  Pennyminder Auth is a simple Ruby on Rails 3.0 web application that financial institutions
   can run and host to provide authentication services to third party applications.
-  Juno authorizes applications by using the (emerging) standard OAuth2 protocol.
+  Auth authorizes applications by using the (emerging) standard OAuth2 protocol.
 
   It is an Open Source project under the terms and conditions of the New BSD License.
 
 Why Juno?
 
   Why would you need to offer such a service?  Initially, Pennyminder Cashbook
-  (our White  label PFM solution) would be the primary consumer of such
+  (our White label PFM solution) would be the primary consumer of such
   authentication services (and we would really appreciate it if you were to
   take a look at our hosted PFM offering at http://www.pennyminder.com/ :).
 
@@ -25,7 +24,7 @@ Dependencies
   MongoDB (required by https://github.com/flowtown/rack-oauth2-server)
   JRuby 1.6.4 or Ruby 1.9.2 (Out of the box, Juno expects to be run under JRuby)
 
-  Juno uses the following gems (and there should be some familiarity with them):
+  Auth uses the following gems (and there should be some familiarity with them):
 
    - Devise
    - OmniAuth
